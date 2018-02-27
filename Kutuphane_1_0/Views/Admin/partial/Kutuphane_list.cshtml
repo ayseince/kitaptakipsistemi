@@ -1,0 +1,136 @@
+﻿<div class="portlet box blue" id="kayit">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>Adres Ekle
+        </div>
+        <div class="tools">
+            <a href="javascript:;" class="collapse"></a>
+            <a href="javascript:;" class="reload"></a>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <div class="form-horizontal">
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="thumbnail" style="padding: 0px; margin: 4px; border: none;">
+                            <img id="imgKartvizit" src="" style="width: 100%; height: 200px; display: block; padding-left: 95px;">
+                            <input id="dosyaSec" type="file" multiple="multiple" onchange="dosyaSecOnChange(this)" style="display: none;" />
+                            <div class="caption" style="padding-left: 241px; margin-top: -31px; margin-bottom: -5px;">
+                                <a href="#" onclick="javascript:void($('#dosyaSec').click())" class="btn btn-xs default" style="padding: 0px;"><i class="fa fa-plus"></i>Düzenle</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Cadde</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon "><i class="fa fa-user"></i></span>
+                                    <input id="cadi" type="text" class="form-control " placeholder="Ad">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Sokak</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon "><i class="fa fa-user"></i></span>
+                                    <input id="sadi" type="text" class="form-control " placeholder="Ad">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Mahalle</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon "><i class="fa fa-user"></i></span>
+                                    <input id="madi" type="text" class="form-control " placeholder="Tarih">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Bina No</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon "><i class="fa fa-user"></i></span>
+                                    <input id="badi" type="text" class="form-control " placeholder="Sayfa Sayısı">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Kat</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon "><i class="fa fa-user"></i></span>
+                                    <input id="kadi" type="text" class="form-control " placeholder="Sayfa Sayısı">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">İlçe</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon "><i class="fa fa-user"></i></span>
+                                    <input id="içadi" type="text" class="form-control " placeholder="Sayfa Sayısı">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">İl</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon "><i class="fa fa-user"></i></span>
+                                    <input id="iladi" type="text" class="form-control " placeholder="Sayfa Sayısı">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Posta kodu</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon "><i class="fa fa-user"></i></span>
+                                    <input id="padi" type="text" class="form-control " placeholder="Tarih">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-offset-3 col-md-7">
+                                        <button type="button" class="btn default" onclick="vaz()">Vazgeç</button>
+                                        <button type="submit" class="btn blue" onclick="kaydet()"><i class="fa fa-check"></i>Kaydet</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END FORM-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+        function kaydet() {
+
+            var model = {
+                Cadde: $("#cadi").val(),
+                Mahalle: $("#madi").val(),
+                Sokak: $("#sadi").val(),
+                Kat: $("#kadi").val(),
+                İl: $("#iladi").val(),
+                İlçe: $("#içadi").val(),
+                BinaNo: $("#badi").val(),
+                PostaKodu: $("#padi").val(),
+
+            }
+
+            tgAjx(model, "/Admin/AdresListesii", "");
+            $("#AdresKayit").modal("hide");
+            tgAjx("", "/Admin/AdresListesi", "");
+
+        }
+        function vaz() {
+            $("#AdresKayit").modal("hide");
+        }
+</script>

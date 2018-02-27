@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "KitapListesi";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet box blue">
+
+            <div class="portlet-body">
+                <div class="table-toolbar">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="btn-group">
+                                <a href="#tgKullaniciKayit" data-toggle="modal" class="btn green-sharp" onclick="funcNewRecord()">Yeni Kayıt Ekle  <i class="fa fa-plus"></i></a>
+                                <form class="search-form search-form-expanded" action="http://www.keenthemes.com/preview/metronic/theme/templates/admin2/extra_search.html" method="GET">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search..." name="query">
+                                        <span class="input-group-btn">
+                                            <a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="
+                                Username
+                                activate to sort column ascending"
+                                style="width: 165px;">
+                                ISBN
+                            </th>
+
+                            <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                Full Name
+                                activate to sort column ascending"
+                                style="width: 208px;">
+                                Kitap Adı
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                Full Name
+                                activate to sort column ascending"
+                                style="width: 208px;">
+                                Yayın Tarihi
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                Full Name
+                                activate to sort column ascending"
+                                style="width: 208px;">
+                                Sayfa sayısı
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="sample_editable_1" rowspan="1" colspan="1" aria-label="
+                                Points
+                                activate to sort column ascending"
+                                style="width: 111px;">
+                                Sil
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablodoldur"></tbody>
+                </table>
+
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>
+<div id="tgKullaniciKayit" class="modal fade" aria-hidden="true" style="width: 70%;left: 14%;top: 13%;display: none;">
+    <div class="modal-dialog modal-full">
+        <div class="modal-content">
+            <div class="modal-body" style="padding:0">
+                @Html.Partial("~/Views/Admin/partial/Kitap_list.cshtml")
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div id="Blokekle" class="modal fade" aria-hidden="true" style="display: none; width: 70%; left: 14%; top: 13%;">
+        <div class="modal-dialog modal-full">
+            <div class="modal-content" style="">
+                <div class="modal-body" style="padding: 0px;">
+                    @Html.Partial("~/Views/Shared/Adminkontrol/Blok.cshtml")
+                </div>
+            </div>
+        </div>
+    </div>*@
+<script>
+    function texboxtemizleme() {
+        $("input").each(function () {
+            $(this).val("");
+        });
+    }
+    function funcNewRecord() {
+        $('#btnSend').attr('onclick', 'funcModalSend(true)');
+    }
+    function sill(e) {
+        tgAjx("", "/Admin/Kitapsil?kid=" + e, function (g) { loadgrid(); loadgrid(); });
+    }
+    function loadgrid() {
+        tgAjx("", "/Admin/KitapListesiLoad", function (e) {
+            $('#tablodoldur')[0].innerHTML = "";
+            var liste = "";
+            for (var i = 0; i < e.length; i++) {
+                liste += "<tr>";
+                liste += "<td>" + e[i].ISBN + "</td>";
+                liste += " <td>" + e[i].KitapAd + "</td>";
+                liste += "<td>" + e[i].YayınTarihi + "</td>";
+                liste += " <td>" + e[i].SayfaSayisi + "</td>";
+                liste += "<td><Button type='button' class='btn btn-primary'  onclick='sill(" + e[i].KitapID + ")'>Sil</button></td>";
+                liste += "</tr>";
+            }
+            $('#tablodoldur')[0].innerHTML = liste;
+
+        });
+    }
+    $(document).ready(function (f) {
+        loadgrid();
+    });
+
+
+</script>

@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="kütüphaneModelStoreContainer" CdmEntityContainer="kütüphaneEntities3">
+    <EntitySetMapping Name="Admin">
+      <EntityTypeMapping TypeName="kütüphaneModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="Eposta" ColumnName="Eposta" />
+          <ScalarProperty Name="Şifre" ColumnName="Şifre" />
+          <ScalarProperty Name="KullanıcıAd" ColumnName="KullanıcıAd" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Adresler">
+      <EntityTypeMapping TypeName="kütüphaneModel.Adresler">
+        <MappingFragment StoreEntitySet="Adresler">
+          <ScalarProperty Name="PostaKodu" ColumnName="PostaKodu" />
+          <ScalarProperty Name="İl" ColumnName="İl" />
+          <ScalarProperty Name="İlçe" ColumnName="İlçe" />
+          <ScalarProperty Name="Kat" ColumnName="Kat" />
+          <ScalarProperty Name="BinaNo" ColumnName="BinaNo" />
+          <ScalarProperty Name="Mahalle" ColumnName="Mahalle" />
+          <ScalarProperty Name="Sokak" ColumnName="Sokak" />
+          <ScalarProperty Name="Cadde" ColumnName="Cadde" />
+          <ScalarProperty Name="AdresID" ColumnName="AdresID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emanet">
+      <EntityTypeMapping TypeName="kütüphaneModel.Emanet">
+        <MappingFragment StoreEntitySet="Emanet">
+          <ScalarProperty Name="TeslimT" ColumnName="TeslimT" />
+          <ScalarProperty Name="EmanetT" ColumnName="EmanetT" />
+          <ScalarProperty Name="KütüphaneID" ColumnName="KütüphaneID" />
+          <ScalarProperty Name="ÜyeID" ColumnName="ÜyeID" />
+          <ScalarProperty Name="KitapID" ColumnName="KitapID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategoriler">
+      <EntityTypeMapping TypeName="kütüphaneModel.Kategoriler">
+        <MappingFragment StoreEntitySet="Kategoriler">
+          <ScalarProperty Name="KategoriAdı" ColumnName="KategoriAdı" />
+          <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KitapKategorileri">
+      <EntityTypeMapping TypeName="kütüphaneModel.KitapKategorileri">
+        <MappingFragment StoreEntitySet="KitapKategorileri">
+          <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+          <ScalarProperty Name="KitapID" ColumnName="KitapID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kitaplar">
+      <EntityTypeMapping TypeName="kütüphaneModel.Kitaplar">
+        <MappingFragment StoreEntitySet="Kitaplar">
+          <ScalarProperty Name="YayinEviID" ColumnName="YayinEviID" />
+          <ScalarProperty Name="SayfaSayisi" ColumnName="SayfaSayisi" />
+          <ScalarProperty Name="YayınTarihi" ColumnName="YayınTarihi" />
+          <ScalarProperty Name="KitapAd" ColumnName="KitapAd" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="KitapID" ColumnName="KitapID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KitaplarKütüphane">
+      <EntityTypeMapping TypeName="kütüphaneModel.KitaplarKütüphane">
+        <MappingFragment StoreEntitySet="KitaplarKütüphane">
+          <ScalarProperty Name="KütüphaneID" ColumnName="KütüphaneID" />
+          <ScalarProperty Name="KitapID" ColumnName="KitapID" />
+          <ScalarProperty Name="Adet" ColumnName="Adet" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KitaplarYazarlar">
+      <EntityTypeMapping TypeName="kütüphaneModel.KitaplarYazarlar">
+        <MappingFragment StoreEntitySet="KitaplarYazarlar">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="YazarID" ColumnName="YazarID" />
+          <ScalarProperty Name="KitapID" ColumnName="KitapID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kütüphane">
+      <EntityTypeMapping TypeName="kütüphaneModel.Kütüphane">
+        <MappingFragment StoreEntitySet="Kütüphane">
+          <ScalarProperty Name="AdresID" ColumnName="AdresID" />
+          <ScalarProperty Name="KütüphaneAd" ColumnName="KütüphaneAd" />
+          <ScalarProperty Name="KütüphaneID" ColumnName="KütüphaneID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uyeler">
+      <EntityTypeMapping TypeName="kütüphaneModel.Uyeler">
+        <MappingFragment StoreEntitySet="Uyeler">
+          <ScalarProperty Name="KullanıcıAd" ColumnName="KullanıcıAd" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="AdresID" ColumnName="AdresID" />
+          <ScalarProperty Name="EPosta" ColumnName="EPosta" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yayinevleri">
+      <EntityTypeMapping TypeName="kütüphaneModel.Yayinevleri">
+        <MappingFragment StoreEntitySet="Yayinevleri">
+          <ScalarProperty Name="AdresID" ColumnName="AdresID" />
+          <ScalarProperty Name="YayinEviAdi" ColumnName="YayinEviAdi" />
+          <ScalarProperty Name="YayinEviID" ColumnName="YayinEviID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yazarlar">
+      <EntityTypeMapping TypeName="kütüphaneModel.Yazarlar">
+        <MappingFragment StoreEntitySet="Yazarlar">
+          <ScalarProperty Name="YazarSoyad" ColumnName="YazarSoyad" />
+          <ScalarProperty Name="YazarAd" ColumnName="YazarAd" />
+          <ScalarProperty Name="YazarID" ColumnName="YazarID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

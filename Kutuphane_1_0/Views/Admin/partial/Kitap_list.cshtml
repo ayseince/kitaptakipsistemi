@@ -1,0 +1,98 @@
+﻿<div class="portlet box blue" id="kayit">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>Kitap Ekle
+        </div>
+        <div class="tools">
+            <a href="javascript:;" class="collapse"></a>
+            <a href="javascript:;" class="reload"></a>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <div class="form-horizontal">
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="thumbnail" style="padding: 0px; margin: 4px; border: none;">
+                            <img id="imgKartvizit" src="" style="width: 100%; height: 200px; display: block; padding-left: 95px;">
+                            <input id="dosyaSec" type="file" multiple="multiple" onchange="dosyaSecOnChange(this)" style="display: none;" />
+                            <div class="caption" style="padding-left: 241px; margin-top: -31px; margin-bottom: -5px;">
+                                <a href="#" onclick="javascript:void($('#dosyaSec').click())" class="btn btn-xs default" style="padding: 0px;"><i class="fa fa-plus"></i>Düzenle</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">ISBN</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon "><i class="fa fa-envelope"></i></span>
+                                    <input id="isbn" type="email" class="form-control " placeholder="ISBN">
+                                    <input id="inputKullaniciId" value="0" style="display: none;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Kitap Adı</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon "><i class="fa fa-user"></i></span>
+                                    <input id="kadi" type="text" class="form-control " placeholder="Ad">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Yayın Tarihi</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon "><i class="fa fa-user"></i></span>
+                                    <input id="yayintarihi" type="text" class="form-control " placeholder="Tarih">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Sayfa Sayısı</label>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-addon "><i class="fa fa-user"></i></span>
+                                    <input id="sayfasayisi" type="text" class="form-control " placeholder="Sayfa Sayısı">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-offset-3 col-md-7">
+                                        <button type="button" class="btn default" onclick="vaz()">Vazgeç</button>
+                                        <button type="submit" class="btn blue" onclick="kaydet()"><i class="fa fa-check"></i>Kaydet</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END FORM-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+              
+    <script>
+        function kaydet() {
+
+            var model = {
+                ISBN: $("#isbn").val(),
+                KitapAd: $("#kadi").val(),
+                YayınTarihi: $("#yayintarihi").val(),
+                SayfaSayisi: $("#sayfasayisi").val(),
+                Tel: $("#Tel").val(),
+
+            }
+            
+            tgAjx(model, "/Admin/Kitapekle", "");
+            $("#tgKullaniciKayit").modal("hide");
+            tgAjx("", "/Admin/KitapListesi", "");
+
+        }
+        function vaz() {
+            $("#tgKullaniciKayit").modal("hide");
+        }
+    </script>

@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kütüphaneModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="10" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="10" />
+    <Property Name="KullanıcıAd" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Şifre" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Eposta" Type="nchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Adresler">
+    <Key>
+      <PropertyRef Name="AdresID" />
+    </Key>
+    <Property Name="AdresID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cadde" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Sokak" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Mahalle" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BinaNo" Type="int" Nullable="false" />
+    <Property Name="Kat" Type="int" Nullable="false" />
+    <Property Name="İlçe" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="İl" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="PostaKodu" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Emanet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KitapID" Type="int" />
+    <Property Name="ÜyeID" Type="int" />
+    <Property Name="KütüphaneID" Type="int" />
+    <Property Name="EmanetT" Type="datetime" />
+    <Property Name="TeslimT" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Kategoriler">
+    <Key>
+      <PropertyRef Name="KategoriID" />
+    </Key>
+    <Property Name="KategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KategoriAdı" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="KitapKategorileri">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="KitapID" Type="int" Nullable="false" />
+    <Property Name="KategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kitaplar">
+    <Key>
+      <PropertyRef Name="KitapID" />
+    </Key>
+    <Property Name="KitapID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISBN" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="KitapAd" Type="nvarchar" MaxLength="50" />
+    <Property Name="YayınTarihi" Type="nvarchar" MaxLength="10" />
+    <Property Name="SayfaSayisi" Type="nvarchar" MaxLength="10" />
+    <Property Name="YayinEviID" Type="int" />
+  </EntityType>
+  <EntityType Name="KitaplarKütüphane">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Adet" Type="int" />
+    <Property Name="KitapID" Type="int" />
+    <Property Name="KütüphaneID" Type="int" />
+  </EntityType>
+  <EntityType Name="KitaplarYazarlar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="KitapID" Type="int" Nullable="false" />
+    <Property Name="YazarID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kütüphane">
+    <Key>
+      <PropertyRef Name="KütüphaneID" />
+    </Key>
+    <Property Name="KütüphaneID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KütüphaneAd" Type="nvarchar" MaxLength="20" />
+    <Property Name="AdresID" Type="int" />
+  </EntityType>
+  <EntityType Name="Uyeler">
+    <Key>
+      <PropertyRef Name="UyeID" />
+    </Key>
+    <Property Name="UyeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="10" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="10" />
+    <Property Name="Cinsiyet" Type="nvarchar" MaxLength="10" />
+    <Property Name="Tel" Type="nvarchar" MaxLength="10" />
+    <Property Name="EPosta" Type="nvarchar" MaxLength="20" />
+    <Property Name="AdresID" Type="int" />
+    <Property Name="Sifre" Type="nvarchar" MaxLength="10" />
+    <Property Name="KullanıcıAd" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Yayinevleri">
+    <Key>
+      <PropertyRef Name="YayinEviID" />
+    </Key>
+    <Property Name="YayinEviID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="YayinEviAdi" Type="nvarchar" MaxLength="10" />
+    <Property Name="AdresID" Type="int" />
+  </EntityType>
+  <EntityType Name="Yazarlar">
+    <Key>
+      <PropertyRef Name="YazarID" />
+    </Key>
+    <Property Name="YazarID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="YazarAd" Type="nvarchar" MaxLength="10" />
+    <Property Name="YazarSoyad" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <Association Name="FK_Emanet_Kitaplar1">
+    <End Role="Kitaplar" Type="Self.Kitaplar" Multiplicity="0..1" />
+    <End Role="Emanet" Type="Self.Emanet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kitaplar">
+        <PropertyRef Name="KitapID" />
+      </Principal>
+      <Dependent Role="Emanet">
+        <PropertyRef Name="KitapID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Emanet_Kütüphane">
+    <End Role="Kütüphane" Type="Self.Kütüphane" Multiplicity="0..1" />
+    <End Role="Emanet" Type="Self.Emanet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kütüphane">
+        <PropertyRef Name="KütüphaneID" />
+      </Principal>
+      <Dependent Role="Emanet">
+        <PropertyRef Name="KütüphaneID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Emanet_Üyeler">
+    <End Role="Uyeler" Type="Self.Uyeler" Multiplicity="0..1" />
+    <End Role="Emanet" Type="Self.Emanet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uyeler">
+        <PropertyRef Name="UyeID" />
+      </Principal>
+      <Dependent Role="Emanet">
+        <PropertyRef Name="ÜyeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KitapKategorileri_Kategoriler">
+    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1" />
+    <End Role="KitapKategorileri" Type="Self.KitapKategorileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategoriler">
+        <PropertyRef Name="KategoriID" />
+      </Principal>
+      <Dependent Role="KitapKategorileri">
+        <PropertyRef Name="KategoriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KitapKategorileri_Kitaplar">
+    <End Role="Kitaplar" Type="Self.Kitaplar" Multiplicity="1" />
+    <End Role="KitapKategorileri" Type="Self.KitapKategorileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kitaplar">
+        <PropertyRef Name="KitapID" />
+      </Principal>
+      <Dependent Role="KitapKategorileri">
+        <PropertyRef Name="KitapID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kitaplar_Yayinevleri">
+    <End Role="Yayinevleri" Type="Self.Yayinevleri" Multiplicity="0..1" />
+    <End Role="Kitaplar" Type="Self.Kitaplar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Yayinevleri">
+        <PropertyRef Name="YayinEviID" />
+      </Principal>
+      <Dependent Role="Kitaplar">
+        <PropertyRef Name="YayinEviID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KitaplarKütüphane_Kitaplar">
+    <End Role="Kitaplar" Type="Self.Kitaplar" Multiplicity="0..1" />
+    <End Role="KitaplarKütüphane" Type="Self.KitaplarKütüphane" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kitaplar">
+        <PropertyRef Name="KitapID" />
+      </Principal>
+      <Dependent Role="KitaplarKütüphane">
+        <PropertyRef Name="KitapID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KitaplarKütüphane_Kütüphane">
+    <End Role="Kütüphane" Type="Self.Kütüphane" Multiplicity="0..1" />
+    <End Role="KitaplarKütüphane" Type="Self.KitaplarKütüphane" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kütüphane">
+        <PropertyRef Name="KütüphaneID" />
+      </Principal>
+      <Dependent Role="KitaplarKütüphane">
+        <PropertyRef Name="KütüphaneID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KitaplarYazarlar_Yazarlar1">
+    <End Role="Yazarlar" Type="Self.Yazarlar" Multiplicity="1" />
+    <End Role="KitaplarYazarlar" Type="Self.KitaplarYazarlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Yazarlar">
+        <PropertyRef Name="YazarID" />
+      </Principal>
+      <Dependent Role="KitaplarYazarlar">
+        <PropertyRef Name="YazarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kütüphane_Adresler">
+    <End Role="Adresler" Type="Self.Adresler" Multiplicity="0..1" />
+    <End Role="Kütüphane" Type="Self.Kütüphane" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adresler">
+        <PropertyRef Name="AdresID" />
+      </Principal>
+      <Dependent Role="Kütüphane">
+        <PropertyRef Name="AdresID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yayinevleri_Adresler">
+    <End Role="Adresler" Type="Self.Adresler" Multiplicity="0..1" />
+    <End Role="Yayinevleri" Type="Self.Yayinevleri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adresler">
+        <PropertyRef Name="AdresID" />
+      </Principal>
+      <Dependent Role="Yayinevleri">
+        <PropertyRef Name="AdresID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="kütüphaneModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Adresler" EntityType="Self.Adresler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Emanet" EntityType="Self.Emanet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KitapKategorileri" EntityType="Self.KitapKategorileri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kitaplar" EntityType="Self.Kitaplar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KitaplarKütüphane" EntityType="Self.KitaplarKütüphane" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KitaplarYazarlar" EntityType="Self.KitaplarYazarlar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kütüphane" EntityType="Self.Kütüphane" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Uyeler" EntityType="Self.Uyeler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Yayinevleri" EntityType="Self.Yayinevleri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Yazarlar" EntityType="Self.Yazarlar" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Emanet_Kitaplar1" Association="Self.FK_Emanet_Kitaplar1">
+      <End Role="Kitaplar" EntitySet="Kitaplar" />
+      <End Role="Emanet" EntitySet="Emanet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Emanet_Kütüphane" Association="Self.FK_Emanet_Kütüphane">
+      <End Role="Kütüphane" EntitySet="Kütüphane" />
+      <End Role="Emanet" EntitySet="Emanet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Emanet_Üyeler" Association="Self.FK_Emanet_Üyeler">
+      <End Role="Uyeler" EntitySet="Uyeler" />
+      <End Role="Emanet" EntitySet="Emanet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KitapKategorileri_Kategoriler" Association="Self.FK_KitapKategorileri_Kategoriler">
+      <End Role="Kategoriler" EntitySet="Kategoriler" />
+      <End Role="KitapKategorileri" EntitySet="KitapKategorileri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KitapKategorileri_Kitaplar" Association="Self.FK_KitapKategorileri_Kitaplar">
+      <End Role="Kitaplar" EntitySet="Kitaplar" />
+      <End Role="KitapKategorileri" EntitySet="KitapKategorileri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kitaplar_Yayinevleri" Association="Self.FK_Kitaplar_Yayinevleri">
+      <End Role="Yayinevleri" EntitySet="Yayinevleri" />
+      <End Role="Kitaplar" EntitySet="Kitaplar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KitaplarKütüphane_Kitaplar" Association="Self.FK_KitaplarKütüphane_Kitaplar">
+      <End Role="Kitaplar" EntitySet="Kitaplar" />
+      <End Role="KitaplarKütüphane" EntitySet="KitaplarKütüphane" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KitaplarKütüphane_Kütüphane" Association="Self.FK_KitaplarKütüphane_Kütüphane">
+      <End Role="Kütüphane" EntitySet="Kütüphane" />
+      <End Role="KitaplarKütüphane" EntitySet="KitaplarKütüphane" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KitaplarYazarlar_Yazarlar1" Association="Self.FK_KitaplarYazarlar_Yazarlar1">
+      <End Role="Yazarlar" EntitySet="Yazarlar" />
+      <End Role="KitaplarYazarlar" EntitySet="KitaplarYazarlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kütüphane_Adresler" Association="Self.FK_Kütüphane_Adresler">
+      <End Role="Adresler" EntitySet="Adresler" />
+      <End Role="Kütüphane" EntitySet="Kütüphane" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yayinevleri_Adresler" Association="Self.FK_Yayinevleri_Adresler">
+      <End Role="Adresler" EntitySet="Adresler" />
+      <End Role="Yayinevleri" EntitySet="Yayinevleri" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
